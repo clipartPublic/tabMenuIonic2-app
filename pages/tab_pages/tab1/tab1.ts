@@ -2,7 +2,7 @@ import {Page} from 'ionic-angular';
 
 
 @Page({
-  templateUrl: 'build/pages/tab1/tab1.html',
+  templateUrl: 'build/pages/tab_pages/tab1/tab1.html',
 })
     
 export class Tab1 {

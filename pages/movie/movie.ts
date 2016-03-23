@@ -1,10 +1,13 @@
 import {Page} from 'ionic-angular';
 import { Inject } from 'angular2/core';
 import {Http, Response} from 'angular2/http';
+import {MovieService} from '../../services/movieservice';
 import 'rxjs/add/operator/map';
 
+
 @Page({
-  templateUrl: 'build/pages/movie/movie.html'
+  templateUrl: 'build/pages/movie/movie.html',
+  providers: [MovieService]
 })
 export class MoviePage {
     
@@ -13,9 +16,12 @@ export class MoviePage {
     movie : string;
     movies : {};
     logError : any;
+    movieService : MovieService;
+    isHidden : boolean;
     
    constructor(@Inject(Http) http: Http) {
         this.http = http;
+        this.isHidden=false;
     }   
  
     
@@ -26,9 +32,18 @@ export class MoviePage {
             data => {this.movies = data.results; console.log(data);},
             err => this.logError(err),
             () => console.log('Movie Search Complete')); 
-        
-        
-        }
-          
+        }     
     }
+    //* Stessa funzione implementata tramite un servizio *//
+    searchMovieDB(event, key) {
+        if(event.target.value.length > 2) {
+          this.movieService.searchMovies(event.target.value).subscribe(
+            data => {this.movies = data.results; console.log(data);},
+            err => this.logError(err),
+            () => console.log('Movie Search Complete')
+          );
+        }
+  } 
+    
+    
 }

@@ -10,10 +10,9 @@
 
 <ion-content padding class="getting-started">
   <h3>Cerca un film...</h3>
-  <p>
-     Movies
-  </p>
-  <p>
+  
+     <h3>Movies</h3>
+
     
      <ion-list>
   <ion-header>      
@@ -21,6 +20,13 @@
         <ion-input type="text" placeholder="Cerca un film..." (input)="findMovie($event, searchKey)"></ion-input>
       </ion-item>
     </ion-header>
+    
+      <ion-header [hidden]="isHidden">      Service
+      <ion-item>
+        <ion-input type="text" placeholder="Cerca un film..." (input)="findMovie($event, searchKey)"></ion-input>
+      </ion-item>
+    </ion-header>
+    
     <ion-item *ngFor="#movie of movies" (click)="itemTapped($event, movie)">
       <ion-avatar item-left>
         <img src="https://image.tmdb.org/t/p/w92{{movie.poster_path}}"/>
@@ -29,7 +35,6 @@
       <p class="item-description">{{movie.overview}}</p>
     </ion-item>
   </ion-list>
-    
-  </p>
+ 
 
 </ion-content>
