@@ -1,0 +1,35 @@
+
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Movie</ion-title>
+</ion-navbar>
+
+
+
+<ion-content padding class="getting-started">
+  <h3>Cerca un film...</h3>
+  <p>
+     Movies
+  </p>
+  <p>
+    
+     <ion-list>
+  <ion-header>      
+      <ion-item>
+        <ion-input type="text" placeholder="Cerca un film..." (input)="findMovie($event, searchKey)"></ion-input>
+      </ion-item>
+    </ion-header>
+    <ion-item *ngFor="#movie of movies" (click)="itemTapped($event, movie)">
+      <ion-avatar item-left>
+        <img src="https://image.tmdb.org/t/p/w92{{movie.poster_path}}"/>
+      </ion-avatar>
+      <h2>{{movie.original_title}}</h2>
+      <p class="item-description">{{movie.overview}}</p>
+    </ion-item>
+  </ion-list>
+    
+  </p>
+
+</ion-content>
