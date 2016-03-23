@@ -17,7 +17,6 @@ enableProdMode();
 class MyApp {
   rootPage: any = GettingStartedPage;
   pages: Array<{title: string, component: any}>
-console.log();
   constructor(private app: IonicApp, private platform: Platform) {
     this.initializeApp();
 
