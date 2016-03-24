@@ -12,16 +12,17 @@ import 'rxjs/add/operator/map';
 export class MoviePage {
     
   
-    http : Http;
+    movieService:MovieService;
+    http:Http;
     movie : string;
     movies : {};
     logError : any;
-    movieService : MovieService;
     isHidden : boolean;
     
-   constructor(@Inject(Http) http: Http) {
+   constructor(movieService:MovieService, http:Http) {
         this.http = http;
         this.isHidden=false;
+        this.movieService = movieService;
     }   
  
     
